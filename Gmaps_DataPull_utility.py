@@ -21,8 +21,12 @@ query_name+=(str(dt.datetime.now().hour))
 query_name+=(str(dt.datetime.now().minute))
 print(query_name)
 
-# this first block initializes some information
-gmaps = googlemaps.Client(key='AIzaSyD_-Xexo79jeQhPrvwrrltW4lbdlcFQs8Y')
+# first, we need to read in our API key.  If you need an API key, they are available from Google for free up to 2500
+# queries per day
+with open('transitEvalApiKey.txt','r') as f:
+    apikey=f.read()
+
+gmaps = googlemaps.Client(key=apikey)
 modeList=['transit']#,'bicycling']
 #largest times list
 # timesList=(dt.datetime(2016,4,16,5),dt.datetime(2016,4,16,8),
